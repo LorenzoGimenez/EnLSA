@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ropa</title>
+  <style>
+    :root {
+      --primary: #0d6efd;
+      --background: #f4f4f4;
+      --text: #333;
+      --card-bg: #fff;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 1rem;
+    }
+
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px var(--shadow);
+      text-align: center;
+      transition: transform 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .emoji {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 600px) {
+      
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+   .btn-menu {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  background-color: #ffdddd;
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+  cursor: pointer;
+  z-index: 1000;
+  width: fit-content;
+}
+
+.btn-menu:hover {
+  background-color: #ffbbbb;
+}
+  </style>
+</head>
+<body>
+
+    <a href="../camara.html" class="btn-menu">🏠 Menú</a>
+
+<div class="grid">
+
+  <a href="escuela/alumnos.html" class="card">
+    <div class="emoji">👕</div>
+    <h2>Remera</h2>
+  </a>
+
+  <a href="escuela/aprender.html" class="card">
+    <div class="emoji">👙</div>
+    <h2>Bombacha</h2>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">🩲</div>
+    <h2>Calzoncillo</h2>
+  </a>
+
+
+  <a href="camisa.html" class="card">
+    <div class="emoji">👔</div>
+    <h2>Camisa</h2>
+  </a>
+
+  <a href="escuela/buscar.html" class="card">
+    <div class="emoji">🧥</div>
+    <h2>Campera</h2>
+  </a>
+
+  <a href="escuela/cartuchera.html" class="card">
+    <div class="emoji">🧦</div>
+    <h2>Medias</h2>
+  </a>
+
+  <a href="escuela/ciencia.html" class="card">
+    <div class="emoji">🩴</div>
+    <h2>Ojotas</h2>
+  </a>
+
+  <a href="escuela/amigos.html" class="card">
+    <div class="emoji">👖</div>
+    <h2>Pantalón</h2>
+  </a>
+
+  <a href="escuela/contestar.html" class="card">
+    <div class="emoji">👗</div>
+    <h2>Vestido</h2>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">🩳</div>
+    <h2>Short</h2>
+  </a>
+ <a href="#" class="card">
+    <div class="emoji">👞</div>
+    <h2>Zapatos</h2>
+  </a>
+
+</div>
+
+</body>
+</html>
