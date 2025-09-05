@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traductor de LSA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+    #video {
+      border: 2px solid #333;
+      border-radius: 8px;
+      width: 640px;
+      height: 480px;
+    }
+    #translation {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+    #loading {
+      font-size: 18px;
+      color: #666;
+    }
+    canvas {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Traductor de Lengua de Señas Argentina (LSA)</h1>
+  <video id="video" autoplay playsinline></video>
+  <canvas id="canvas"></canvas>
+  <div id="loading">Cargando modelo...</div>
+  <div id="translation">Seña detectada: Ninguna</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.18.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose@0.0.7/dist/handpose.min.js"></script>
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const translationDiv = document.getElementById('translation');
+    const loadingDiv = document.getElementById('loading');
+
+    // Configurar el video de la cámara
+    async function setupCamera() {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { width: 640, height: 480 }
+      });
+      video.srcObject = stream;
+      return new Promise((resolve) => {
+        video.onloadedmetadata = () => {
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          resolve(video);
+        };
+      });
+    }
+
+    // Diccionario simplificado de LSA (ejemplo, no realista)
+    const lsaDictionary = {
+      'open_hand': 'Hola',
+      'closed_fist': 'A',
+      'pointing_up': 'Madre'
+    };
+
+    // Función para clasificar gestos (simplificada)
+    function classifyGesture(landmarks) {
+      // Ejemplo: Detectar si la mano está abierta o cerrada basado en la distancia entre dedos
+      const thumbTip = landmarks[4];
+      const indexTip = landmarks[8];
+      const distance = Math.sqrt(
+        Math.pow(thumbTip[0] - indexTip[0], 2) +
+        Math.pow(thumbTip[1] - indexTip[1], 2)
+      );
+
+      if (distance > 100) return 'open_hand';
+      if (distance < 50) return 'closed_fist';
+      if (landmarks[8][1] < landmarks[6][1]) return 'pointing_up';
+      return null;
+    }
+
+    // Función principal
+    async function main() {
+      await setupCamera();
+      const model = await handpose.load();
+      loadingDiv.style.display = 'none';
+
+      async function detectHands() {
+        const predictions = await model.estimateHands(video);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let sign = 'Ninguna';
+
+        if (predictions.length > 0) {
+          const landmarks = predictions[0].landmarks;
+          // Dibujar puntos de la mano
+          landmarks.forEach(point => {
+            ctx.beginPath();
+            ctx.arc(point[0], point[1], 5, 0, 2 * Math.PI);
+            ctx.fillStyle = 'red';
+            ctx.fill();
+          });
+          // Clasificar gesto
+          const gesture = classifyGesture(landmarks);
+          sign = lsaDictionary[gesture] || 'Desconocida';
+        }
+
+        translationDiv.textContent = `Seña detectada: ${sign}`;
+        requestAnimationFrame(detectHands);
+      }
+
+      detectHands();
+    }
+
+    main().catch(console.error);
+  </script>
+</body>
+</html>

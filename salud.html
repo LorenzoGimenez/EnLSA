@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salud</title>
+  <style>
+    :root {
+      --primary: #0d6efd;
+      --background: #f4f4f4;
+      --text: #333;
+      --card-bg: #fff;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 1rem;
+    }
+
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px var(--shadow);
+      text-align: center;
+      transition: transform 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .emoji {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 600px) {
+      
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+   .btn-menu {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  background-color: #ffdddd;
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+  cursor: pointer;
+  z-index: 1000;
+  width: fit-content;
+}
+
+.btn-menu:hover {
+  background-color: #ffbbbb;
+}
+  </style>
+</head>
+<body>
+
+    <a href="camara.html" class="btn-menu">🏠 Menú</a>
+
+<div class="grid">
+
+  <a href="escuela/alumnos.html" class="card">
+    <div class="emoji">🕶️</div>
+    <h2>Anteojos</h2>
+  </a>
+
+  <a href="escuela/aprender.html" class="card">
+    <div class="emoji">🎧</div>
+    <h2>Audífonos</h2>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">📝</div>
+    <h2>Autorización</h2>
+  </a>
+
+
+  <a href="escuela/goma-de-borrar.html" class="card">
+    <div class="emoji">🏥</div>
+    <h2>Clínica</h2>
+  </a>
+
+  <a href="escuela/buscar.html" class="card">
+    <div class="emoji">🩹</div>
+    <h2>Curar</h2>
+  </a>
+
+  <a href="escuela/cartuchera.html" class="card">
+    <div class="emoji">🤕</div>
+    <h2>Dolor</h2>
+  </a>
+<a href="#" class="card">
+    <div class="emoji">🤒</div>
+    <h2>Enfermo</h2>
+  </a>
+  <a href="escuela/ciencia.html" class="card">
+    <div class="emoji">🏥</div>
+    <h2>Hospital</h2>
+  </a>
+
+  <a href="escuela/amigos.html" class="card">
+    <div class="emoji">🤰</div>
+    <h2>Embarazo</h2>
+  </a>
+
+ 
+
+  <a href="#" class="card">
+    <div class="emoji">👩‍⚕️</div>
+    <h2>Enfermera</h2>
+  </a>
+ 
+  <a href="#" class="card">
+    <div class="emoji">🤒</div>
+    <h2>Fiebre</h2>
+  </a>
+ <a href="#" class="card">
+    <div class="emoji">🗣️</div>
+    <h2>Fonoaudiología</h2>
+  </a>
+  <a href="#" class="card">
+    <div class="emoji">🚨</div>
+    <h2>Guardia</h2>
+  </a>
+   <a href="#" class="card">
+    <div class="emoji">🎧</div>
+    <h2>Implante coclear</h2>
+  </a>
+  <a href="#" class="card">
+    <div class="emoji">🛏️</div>
+    <h2>Internación</h2>
+  </a>
+   <a href="escuela/contestar.html" class="card">
+    <div class="emoji">💉</div>
+    <h2>Inyección</h2>
+  </a>
+   <a href="#" class="card">
+    <div class="emoji">❤️</div>
+    <h2>Salud</h2>
+  </a>
+  <a href="#" class="card">
+    <div class="emoji">🤕</div>
+    <h2>Lastimado</h2>
+  </a>
+    <a href="#" class="card">
+    <div class="emoji">🤢</div>
+    <h2>Mareado</h2>
+  </a>
+  <a href="#" class="card">
+    <div class="emoji">👨‍⚕️</div>
+    <h2>Medico</h2>
+  </a>
+    <a href="#" class="card">
+    <div class="emoji">🧑‍⚕️🧠</div>
+    <h2>Psicólogo</h2>
+  </a>
+   <a href="#" class="card">
+    <div class="emoji">💊</div>
+    <h2> Remedios</h2>
+  </a>
+  <a href="#" class="card">
+    <div class="emoji">😮‍💨</div>
+    <h2>Respirar</h2>
+  </a>
+   <a href="escuela/contestar.html" class="card">
+    <div class="emoji">🔍</div>
+    <h2>Revisar</h2>
+  </a>
+   <a href="#" class="card">
+    <div class="emoji">😃</div>
+    <h2>Sano</h2>
+  </a>
+  <a href="#" class="card">
+    <div class="emoji">🌡️</div>
+    <h2>Termometro</h2>
+  </a>
+    <a href="#" class="card">
+    <div class="emoji">🤮</div>
+    <h2>Vomitar</h2>
+  </a>
+  <a href="#" class="card">
+    <div class="emoji">🦴</div>
+    <h2>Yeso</h2>
+  </a>
+</div>
+<br><br>
+</body>
+</html>

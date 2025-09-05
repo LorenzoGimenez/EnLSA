@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escuela</title>
+  <style>
+    :root {
+      --primary: #0d6efd;
+      --background: #f4f4f4;
+      --text: #333;
+      --card-bg: #fff;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 1rem;
+    }
+
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px var(--shadow);
+      text-align: center;
+      transition: transform 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .emoji {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 600px) {
+      
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+   .btn-menu {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  background-color: #ffdddd;
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+  cursor: pointer;
+  z-index: 1000;
+  width: fit-content;
+}
+
+.btn-menu:hover {
+  background-color: #ffbbbb;
+}
+  </style>
+</head>
+<body>
+
+    <a href="camara.html" class="btn-menu">🏠 Menú</a>
+
+<div class="grid">
+
+  <a href="escuela/alumnos.html" class="card">
+    <div class="emoji">👩‍🎓</div>
+    <h2>Alumno/a</h2>
+    <p>Estudiantes en clase</p>
+  </a>
+
+  <a href="escuela/aprender.html" class="card">
+    <div class="emoji">📖</div>
+    <h2>Aprender</h2>
+    <p>El conocimiento es poder</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">📚</div>
+    <h2>Biblioteca</h2>
+    <p>Donde viven los libros</p>
+  </a>
+
+
+  <a href="escuela/goma-de-borrar.html" class="card">
+    <div class="emoji">🧽</div>
+    <h2>Goma de Borrar</h2>
+    <p>Borrá lo que no sirve</p>
+  </a>
+
+  <a href="escuela/buscar.html" class="card">
+    <div class="emoji">🔍</div>
+    <h2>Buscar</h2>
+    <p>Explorar y encontrar</p>
+  </a>
+
+  <a href="escuela/cartuchera.html" class="card">
+    <div class="emoji">✏️</div>
+    <h2>Cartuchera</h2>
+    <p>Guardá tus útiles</p>
+  </a>
+
+  <a href="escuela/ciencia.html" class="card">
+    <div class="emoji">🔬</div>
+    <h2>Ciencia</h2>
+    <p>Explorando el mundo</p>
+  </a>
+
+  <a href="escuela/amigos.html" class="card">
+    <div class="emoji">🤝</div>
+    <h2>Amigos</h2>
+    <p>Amigos de clase</p>
+  </a>
+
+  <a href="escuela/contestar.html" class="card">
+    <div class="emoji">💬</div>
+    <h2>Contestar</h2>
+    <p>Dar una respuesta</p>
+  </a>
+
+  <a href="escuela/copiar.html" class="card">
+    <div class="emoji">📄</div>
+    <h2>Copiar</h2>
+    <p>Reproducir un texto</p>
+  </a>
+
+  <a href="escuela/corregir.html" class="card">
+    <div class="emoji">✍️</div>
+    <h2>Corregir</h2>
+    <p>Mejorar errores</p>
+  </a>
+
+  <a href="escuela/curioso.html" class="card">
+    <div class="emoji">🤔</div>
+    <h2>Curioso</h2>
+    <p>Siempre con preguntas</p>
+  </a>
+
+  <a href="escuela/dibujar.html" class="card">
+    <div class="emoji">🎨</div>
+    <h2>Dibujar</h2>
+    <p>Expresarse en imágenes</p>
+  </a>
+
+  <a href="escuela/diccionario.html" class="card">
+    <div class="emoji">📔</div>
+    <h2>Diccionario</h2>
+    <p>Buscá el significado</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">👨‍🏫</div>
+    <h2>Director</h2>
+    <p>Guía de la escuela</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">➗</div>
+    <h2>División</h2>
+    <p>Operación matemática</p>
+  </a>
+
+  <a href="escuela/sumar.html" class="card">
+    <div class="emoji">➕</div>
+    <h2>Sumar</h2>
+    <p>Agregar valores</p>
+  </a>
+
+  <a href="escuela/resta.html" class="card">
+    <div class="emoji">➖</div>
+    <h2>Resta</h2>
+    <p>Quitar valores</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">✖️</div>
+    <h2>Multiplicación</h2>
+    <p>Repetir valores</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">🏃‍♂️</div>
+    <h2>Recreo</h2>
+    <p>Tiempo de juego</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">👩‍🏫</div>
+    <h2>Enseñar</h2>
+    <p>Compartir conocimiento</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">🧠</div>
+    <h2>Entender</h2>
+    <p>Comprender la idea</p>
+  </a>
+
+  <a href="escuela/escribir.html" class="card">
+    <div class="emoji">✍️</div>
+    <h2>Escribir</h2>
+    <p>Crear con palabras</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">📘</div>
+    <h2>Estudiar</h2>
+    <p>Aprender con esfuerzo</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">🗣️</div>
+    <h2>Explicar</h2>
+    <p>Hacer más claro</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">🚶‍♂️</div>
+    <h2>Formar fila</h2>
+    <p>Ordenarse en la escuela</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">❌</div>
+    <h2>Faltar</h2>
+    <p>No asistir a clase</p>
+  </a>
+   
+  <a href="#" class="card">
+    <div class="emoji">🏫</div>
+    <h2>Grado</h2>
+    <p>Nivel escolar</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">👕</div>
+    <h2>Guardapolvo</h2>
+    <p>Uniforme escolar</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">📓</div>
+    <h2>Deberes</h2>
+    <p>Tareas para casa</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">📜</div>
+    <h2>Historia</h2>
+    <p>Relatos del pasado</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">🤓</div>
+    <h2>Inteligente</h2>
+    <p>Rápido para aprender</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">⭐</div>
+    <h2>Importante</h2>
+    <p>Algo de valor</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">⚽</div>
+    <h2>Jugar</h2>
+    <p>Diversión en el recreo</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">🏫</div>
+    <h2>Escuela</h2>
+    <p>Lugar de aprendizaje</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">✏️</div>
+    <h2>Lápiz</h2>
+    <p>Para escribir</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">📚</div>
+    <h2>Materias</h2>
+    <p>Diferentes asignaturas</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">📖</div>
+    <h2>Literatura</h2>
+    <p>Historias y lecturas</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">👩‍🏫</div>
+    <h2>Maestra</h2>
+    <p>Guía del aula</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">➗</div>
+    <h2>Matemática</h2>
+    <p>Números y operaciones</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">🏫</div>
+    <h2>Mi aula</h2>
+    <p>Espacio para aprender</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">🎒</div>
+    <h2>Mochila</h2>
+    <p>Guardá tus útiles</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">❓</div>
+    <h2>No entender</h2>
+    <p>Cuando falta claridad</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">📄</div>
+    <h2>Papel</h2>
+    <p>Soporte para escribir</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">💭</div>
+    <h2>Pensar</h2>
+    <p>Reflexionar y razonar</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">🖍️</div>
+    <h2>Pizarrón</h2>
+    <p>Escribir en la clase</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">🙋‍♂️</div>
+    <h2>Presente</h2>
+    <p>Asistir a clase</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">❓</div>
+    <h2>Preguntar</h2>
+    <p>Buscar respuestas</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">📏</div>
+    <h2>Regla</h2>
+    <p>Medir y trazar</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">🤝</div>
+    <h2>Respetar</h2>
+    <p>Tratar con consideración</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">🧠</div>
+    <h2>Saber</h2>
+    <p>Tener conocimiento</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">✏️</div>
+    <h2>Sacapuntas</h2>
+    <p>Mantener el lápiz listo</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">✅</div>
+    <h2>Total</h2>
+    <p>Suma completa</p>
+  </a>
+
+  <a href="#" class="card">
+    <div class="emoji">📦</div>
+    <h2>Traer</h2>
+    <p>Llevar a la escuela</p>
+  </a>
+
+</div>
+
+</body>
+</html>

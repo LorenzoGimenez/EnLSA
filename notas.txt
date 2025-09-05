@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Traductor LSA</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    video, canvas {
+      border: 2px solid #333;
+      border-radius: 10px;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #0077cc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Traductor de Lengua de Señas</h1>
+  <video id="video" width="640" height="480" autoplay></video>
+  <canvas id="canvas" width="640" height="480"></canvas>
+  <div id="output">Haz una seña...</div>
+
+  <!-- Mediapipe y drawing utils -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.min.js"></script>
+
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const output = document.getElementById('output');
+
+    // Inicializar MediaPipe Hands
+    const hands = new Hands({
+      locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
+    });
+    hands.setOptions({
+      maxNumHands: 1,
+      modelComplexity: 1,
+      minDetectionConfidence: 0.7,
+      minTrackingConfidence: 0.7
+    });
+
+    hands.onResults(onResults);
+
+    const camera = new Camera(video, {
+      onFrame: async () => {
+        await hands.send({ image: video });
+      },
+      width: 640,
+      height: 480
+    });
+    camera.start();
+
+    function onResults(results) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(results.image, 0, 0, canvas.width, canvas.height);
+
+      if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
+        for (const landmarks of results.multiHandLandmarks) {
+          drawConnectors(ctx, landmarks, HAND_CONNECTIONS, { color: '#00FF00', lineWidth: 2 });
+          drawLandmarks(ctx, landmarks, { color: '#FF0000', lineWidth: 1 });
+          const letter = reconocerLetra(landmarks);
+          if (letter) output.textContent = "Letra detectada: " + letter;
+        }
+      }
+    }
+
+    // FUNCIONES DE RECONOCIMIENTO (MUY SIMPLIFICADAS)
+    function reconocerLetra(landmarks) {
+      // Puntos: 0 = muñeca, 4 = pulgar, 8 = índice, 12 = medio, 16 = anular, 20 = meñique
+      const thumb = landmarks[4];
+      const index = landmarks[8];
+      const middle = landmarks[12];
+      const ring = landmarks[16];
+      const pinky = landmarks[20];
+
+      // Ejemplo muy simple: posiciones relativas
+      if (index.y > middle.y && middle.y > ring.y && ring.y > pinky.y) return "A";
+      if (index.y < thumb.y && middle.y < thumb.y) return "B";
+      if (index.x < thumb.x && middle.x < thumb.x) return "C";
+      if (index.y < middle.y && pinky.y < ring.y) return "D";
+      // ... Aquí se deberían agregar las condiciones para el resto del abecedario
+
+      return null; // No se reconoce
+    }
+  </script>
+</body>
+</html>
+
+
+himno nacionl
+conduncta, comunicacion (cuestiones basicas en la escuela)
+agregar juegos 
+fechas con efemeries 
+
+plurilingue (van con su maestra de inclusion )
+drive (guardar )
+saludos 
+provincias 
+empatentarla 
+nombre juegos de palabras 
+nombres:
+escuela, con lenguajes de señas (algun juego de palabra)- LSA 
+ConLSA
+EnLSa
+  enseñar
+
+pinchar una provincia que haga la seña con la letra y que escriba la palabra y desp que tenga video ( que tenga video que enseñe)
+
+chequear qeu ya no este, que sea diferente 
+app LSA en familia 
+comunicar con la famiia 
+Refoxar lengua oral y escrita 
+facilitar la comunicacion 
+poner palabras y hacer un comunicado 
+los auxiliares siempre se comunican con los videos. Pasar videos???? 
+que busquen formas de comunicarse con los oxentes 

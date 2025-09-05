@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador con Contenedores</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        #search-input {
+            width: 100%;
+            padding: 10px;
+            font-size: clamp(14px, 4vw, 16px);
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+
+        #search-input:focus {
+            border-color: #007bff;
+        }
+
+        .containers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: clamp(8px, 2vw, 12px);
+            justify-content: center;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .container {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: clamp(8px, 2vw, 12px);
+            text-align: center;
+            width: clamp(40px, 12vw, 60px);
+            min-width: 40px;
+            transition: background-color 0.3s, transform 0.2s;
+            font-size: clamp(12px, 3.5vw, 14px);
+            cursor: pointer;
+        }
+
+        .container:hover {
+            background-color: #e0e0e0;
+        }
+
+        .container.hidden {
+            display: none;
+        }
+
+        .container.visible {
+            background-color: #007bff;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .section {
+            margin: clamp(10px, 3vw, 20px) 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .section h2 {
+            margin: 10px 0;
+            font-size: clamp(16px, 4vw, 20px);
+            color: #333;
+        }
+
+        .section.hidden {
+            display: none;
+        }
+
+        /* Media Queries para responsividad */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .search-container {
+                max-width: 100%;
+                padding: 0 5px;
+            }
+
+            .containers {
+                gap: clamp(6px, 2vw, 8px);
+            }
+
+            .container {
+                width: clamp(35px, 10vw, 50px);
+                padding: clamp(6px, 1.5vw, 10px);
+                font-size: clamp(11px, 3.5vw, 13px);
+            }
+
+            .section h2 {
+                font-size: clamp(14px, 4vw, 16px);
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                width: clamp(30px, 8vw, 45px);
+                padding: clamp(5px, 1.5vw, 8px);
+                font-size: clamp(10px, 3vw, 12px);
+            }
+        }
+         .btn-menu {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  background-color: #ffdddd;
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+  cursor: pointer;
+  z-index: 1000;
+  width: fit-content;
+}
+
+.btn-menu:hover {
+  background-color: #ffbbbb;
+}
+    </style>
+</head>
+<body>
+        <a href="camara.html" class="btn-menu">🏠 Menú</a>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Busca una palabra...">
+    </div>
+
+    <div class="section" id="days-section">
+        <h2>Días de la Semana</h2>
+        <div id="days" class="containers"></div>
+    </div>
+    <div class="section" id="months-section">
+        <h2>Meses del Año</h2>
+        <div id="months" class="containers"></div>
+    </div>
+
+    <script>
+        const days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
+        const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+
+        const searchInput = document.getElementById('search-input');
+        const daysContainer = document.getElementById('days');
+        const monthsContainer = document.getElementById('months');
+        const daysSection = document.getElementById('days-section');
+        const monthsSection = document.getElementById('months-section');
+
+        // Generar contenedores para días
+        days.forEach(day => {
+            const div = document.createElement('div');
+            div.className = 'container';
+            div.textContent = day;
+            div.dataset.value = day;
+            div.addEventListener('click', () => {
+                window.location.href = `calendario/${day}.html`;
+            });
+            daysContainer.appendChild(div);
+        });
+
+        // Generar contenedores para meses
+        months.forEach(month => {
+            const div = document.createElement('div');
+            div.className = 'container';
+            div.textContent = month;
+            div.dataset.value = month;
+            div.addEventListener('click', () => {
+                window.location.href = `calendario/${month}.html`;
+            });
+            monthsContainer.appendChild(div);
+        });
+
+        // Función para filtrar y mostrar contenedores
+        function updateSearch(query) {
+            query = query.toLowerCase().trim();
+
+            // Mostrar u ocultar contenedores individuales
+            document.querySelectorAll('.container').forEach(container => {
+                const value = container.dataset.value.toLowerCase();
+                if (query && value.startsWith(query)) {
+                    container.classList.remove('hidden');
+                    container.classList.add('visible');
+                } else {
+                    container.classList.add('hidden');
+                    container.classList.remove('visible');
+                }
+            });
+
+            // Mostrar u ocultar secciones completas basadas en si tienen contenedores visibles
+            [daysSection, monthsSection].forEach(section => {
+                const containers = section.querySelectorAll('.container');
+                const hasVisible = Array.from(containers).some(container => 
+                    !container.classList.contains('hidden')
+                );
+                section.classList.toggle('hidden', !hasVisible);
+            });
+        }
+
+        // Evento de entrada en el input
+        searchInput.addEventListener('input', function() {
+            updateSearch(this.value);
+        });
+
+        // Mostrar todos los contenedores al inicio
+        updateSearch('');
+    </script>
+</body>
+</html>
